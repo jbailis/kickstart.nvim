@@ -114,6 +114,13 @@ require('lazy').setup({
     },
   },
 
+  -- Nightfly colorscheme theme
+  { "bluz71/vim-nightfly-colors",
+    name = "nightfly",
+    lazy = true,
+    priority = 1000
+  },
+
   {
     -- Theme inspired by Atom
     'navarasu/onedark.nvim',
@@ -130,7 +137,7 @@ require('lazy').setup({
     opts = {
       options = {
         icons_enabled = false,
-        theme = 'onedark',
+        theme = 'nightfly',
         component_separators = '|',
         section_separators = '',
       },
@@ -178,6 +185,21 @@ require('lazy').setup({
     end,
   },
 
+  -- Auto closing and surrouding/wrapping
+  {
+    "windwp/nvim-autopairs",
+    config = function()
+      require("nvim-autopairs").setup {}
+    end
+  },
+
+  {
+    "windwp/nvim-ts-autotag",
+    config = function()
+      require("nvim-ts-autotag").setup {}
+    end
+  },
+
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
   --       These are some example plugins that I've included in the kickstart repository.
   --       Uncomment any of the lines below to enable them.
@@ -197,6 +219,10 @@ require('lazy').setup({
 
 -- [[ Setting options ]]
 -- See `:help vim.o`
+
+-- chooose defaULt colorscheme
+vim.cmd [[colorscheme nightfly]]
+
 
 -- Set highlight on search
 vim.o.hlsearch = true
@@ -302,6 +328,7 @@ require('nvim-treesitter.configs').setup {
 
   highlight = { enable = true },
   indent = { enable = true, disable = { 'python' } },
+  autotag = { enable = true },
   incremental_selection = {
     enable = true,
     keymaps = {
