@@ -6,5 +6,9 @@ vim.o.tabstop = 8
 vim.o.softtabstop = 0
 vim.g.markdown_recommended_style = 0
 
+-- settings for lines
+vim.o.relativenumber = true
+vim.o.cursorline = true
+
 
 return {}

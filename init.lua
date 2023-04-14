@@ -200,6 +200,17 @@ require('lazy').setup({
     end
   },
 
+  {
+    "kylechui/nvim-surround",
+    version = "*", -- Use for stability; omit to use `main` branch for the latest features
+    event = "VeryLazy",
+    config = function()
+      require("nvim-surround").setup({
+        -- Configuration here, or leave empty to use defaults
+      })
+    end
+  },
+
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
   --       These are some example plugins that I've included in the kickstart repository.
   --       Uncomment any of the lines below to enable them.
@@ -221,6 +232,15 @@ require('lazy').setup({
 -- See `:help vim.o`
 
 -- chooose defaULt colorscheme
+-- and autocommand for transparent background
+vim.api.nvim_create_autocmd({ "ColorScheme" }, {
+  pattern="*",
+  callback = function()
+    vim.api.nvim_set_hl(0, "Normal", { ctermbg=NONE, guibg=NONE })
+    vim.api.nvim_set_hl(0, "SignColumn", { guibg=NONE })
+    vim.cmd.highlight('LineNr guibg=NONE')
+  end,
+})
 vim.cmd [[colorscheme nightfly]]
 
 
