@@ -70,7 +70,7 @@ require('lazy').setup({
   'tpope/vim-rhubarb',
 
   -- Detect tabstop and shiftwidth automatically
-  'tpope/vim-sleuth',
+  -- 'tpope/vim-sleuth',
 
   -- NOTE: This is where your plugins related to LSP can be installed.
   --  The configuration is done below. Search for lspconfig to find it below.
@@ -233,14 +233,18 @@ require('lazy').setup({
 
 -- chooose defaULt colorscheme
 -- and autocommand for transparent background
-vim.api.nvim_create_autocmd({ "ColorScheme" }, {
-  pattern="*",
-  callback = function()
-    vim.api.nvim_set_hl(0, "Normal", { ctermbg=NONE, guibg=NONE })
-    vim.api.nvim_set_hl(0, "SignColumn", { guibg=NONE })
-    vim.cmd.highlight('LineNr guibg=NONE')
-  end,
-})
+-- vim.api.nvim_create_autocmd({ "ColorScheme" }, {
+--   pattern="*",
+--   callback = function()
+--     -- vim.api.nvim_set_hl(0, "Normal", { ctermbg=NONE, guibg=NONE })
+--     vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+--     vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+--     -- vim.api.nvim_set_hl(0, "LineNr", { bg = "none" })
+--     -- vim.api.nvim_set_hl(0, "SignColumn", { guibg=NONE })
+--     vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
+--     vim.cmd.highlight('LineNr guibg=NONE')
+--   end,
+-- })
 vim.cmd [[colorscheme nightfly]]
 
 
@@ -347,7 +351,7 @@ require('nvim-treesitter.configs').setup {
   auto_install = true,
 
   highlight = { enable = true },
-  indent = { enable = true, disable = { 'python' } },
+  indent = { enable = true, disable = { 'python', 'html' } },
   autotag = { enable = true },
   incremental_selection = {
     enable = true,
