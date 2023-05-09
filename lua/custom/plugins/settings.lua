@@ -10,5 +10,7 @@ vim.o.softtabstop = 0
 vim.o.relativenumber = true
 vim.o.cursorline = true
 
+-- do not wrap lines by default
+vim.o.wrap = 0
 
 return {}
